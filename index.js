@@ -92,6 +92,10 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.get('/streaming', (req, res) => {
+    res.json({ "Streaming": "Yess" })
+})
+
 app.post(`/consumer/:id`, async ({ body, params }, res) => {
     try {
         let id = params.id
