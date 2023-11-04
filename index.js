@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require('cors');
 const socketIO = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 // const MongoClient = require('mongodb').MongoClient;
 const webrtc = require('wrtc')
 const bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ const server = http.Server(app);
 const bcrypt = require('bcryptjs')
 const io = socketIO(server, {
     cors: {
-        origin: "https://streaming.safetix.cloud",
+        origin: "https://safetixstreaming.com/",
         methods: ["GET", "POST"]
     }
 });
@@ -29,7 +30,7 @@ const io = socketIO(server, {
 let senderStream;
 
 app.use(cors({
-    origin: "https://streaming.safetix.cloud",
+    origin: "https://safetixstreaming.com/",
     methods: ["GET", "POST"]
 }))
 app.use(express.static('public'));
@@ -96,6 +97,10 @@ app.post('/login', async (req, res) => {
         // Passwords do not match; authentication failed
         // return res.status(401).json({ message: 'Wrong Password' });
     // }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 app.get('/streaming', (req, res) => {
