@@ -113,11 +113,26 @@ app.post(`/consumer/`, async ({ body, params }, res) => {
         console.log("Id", params.id)
         const peer = new webrtc.RTCPeerConnection({
             iceServers: [
-                {
-                  urls: "turn:turn.safetixstreaming.com",
-                  username: "chris",
-                  credential: "Capricorn190RCapricorn13F"
-                },
+                  {
+                    urls: ["stun:bn-turn1.xirsys.com"]
+                  },
+                  {
+                    username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
+                    credential: "8ef24e28-756b-11ee-995a-0242ac140004",
+                    urls: [
+                      "turn:bn-turn1.xirsys.com:80?transport=udp",
+                      "turn:bn-turn1.xirsys.com:3478?transport=udp",
+                      "turn:bn-turn1.xirsys.com:80?transport=tcp",
+                      "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+                      "turns:bn-turn1.xirsys.com:443?transport=tcp",
+                      "turns:bn-turn1.xirsys.com:5349?transport=tcp"
+                    ]
+                  }
+                // {
+                //   urls: "turn:turn.safetixstreaming.com",
+                //   username: "chris",
+                //   credential: "Capricorn190RCapricorn13F"
+                // },
                 // {
                 //     urls: "stun:stun.relay.metered.ca:80",
                 //   },
@@ -172,11 +187,26 @@ app.post(`/broadcast/`, async ({ body }, res) => {
     try {
         const peer = new webrtc.RTCPeerConnection({
             iceServers: [
-                {
-                  urls: "turn:turn.safetixstreaming.com",
-                  username: "chris",
-                  credential: "Capricorn190RCapricorn13F"
-                }
+                  {
+                    urls: ["stun:bn-turn1.xirsys.com"]
+                  },
+                  {
+                    username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
+                    credential: "8ef24e28-756b-11ee-995a-0242ac140004",
+                    urls: [
+                      "turn:bn-turn1.xirsys.com:80?transport=udp",
+                      "turn:bn-turn1.xirsys.com:3478?transport=udp",
+                      "turn:bn-turn1.xirsys.com:80?transport=tcp",
+                      "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+                      "turns:bn-turn1.xirsys.com:443?transport=tcp",
+                      "turns:bn-turn1.xirsys.com:5349?transport=tcp"
+                    ]
+                  }
+                // {
+                //   urls: "turn:turn.safetixstreaming.com",
+                //   username: "chris",
+                //   credential: "Capricorn190RCapricorn13F"
+                // }
                 // {
                 //     urls: "stun:stun.stunprotocol.org"
                 // },
