@@ -111,23 +111,23 @@ app.post(`/consumer/`, async ({ body, params }, res) => {
     try {
         let id = params.id
         console.log("Id", params.id)
-        const peer = new webrtc.RTCPeerConnection({
-            iceServers: [
-                  {
-                    urls: ["stun:bn-turn1.xirsys.com"]
-                  },
-                  {
-                    username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
-                    credential: "8ef24e28-756b-11ee-995a-0242ac140004",
-                    urls: [
-                      "turn:bn-turn1.xirsys.com:80?transport=udp",
-                      "turn:bn-turn1.xirsys.com:3478?transport=udp",
-                      "turn:bn-turn1.xirsys.com:80?transport=tcp",
-                      "turn:bn-turn1.xirsys.com:3478?transport=tcp",
-                      "turns:bn-turn1.xirsys.com:443?transport=tcp",
-                      "turns:bn-turn1.xirsys.com:5349?transport=tcp"
-                    ]
-                  }
+        // const peer = new webrtc.RTCPeerConnection({
+            //iceServers: [
+            //    {
+            //     urls: ["stun:bn-turn1.xirsys.com"]
+            //      },
+            //      {
+            //        username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
+            //        credential: "8ef24e28-756b-11ee-995a-0242ac140004",
+            //        urls: [
+            //          "turn:bn-turn1.xirsys.com:80?transport=udp",
+            //          "turn:bn-turn1.xirsys.com:3478?transport=udp",
+            //          "turn:bn-turn1.xirsys.com:80?transport=tcp",
+            //          "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+            //          "turns:bn-turn1.xirsys.com:443?transport=tcp",
+            //          "turns:bn-turn1.xirsys.com:5349?transport=tcp"
+            //        ]
+            //      }
                 // {
                 //   urls: "turn:turn.safetixstreaming.com",
                 //   username: "chris",
@@ -156,8 +156,37 @@ app.post(`/consumer/`, async ({ body, params }, res) => {
                 //     username: "807973d909920f718ba0b567",
                 //     credential: "VGyNVhO+WtsGoTih",
                 //   },
-            ]
-        });
+            //]
+        //});
+
+                const peer = new webrtc.RTCPeerConnection({
+        iceServers: [
+            {
+              urls: "stun:stun.relay.metered.ca:80",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:80",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:80?transport=tcp",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:443",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:443?transport=tcp",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },        
+        ]
+    })
+            
         const desc = new webrtc.RTCSessionDescription(body.sdp);
         await peer.setRemoteDescription(desc);
         // const matchingRoom = rooms.find((room) => room.roomId === id);
@@ -185,23 +214,23 @@ app.post(`/consumer/`, async ({ body, params }, res) => {
 
 app.post(`/broadcast/`, async ({ body }, res) => {
     try {
-        const peer = new webrtc.RTCPeerConnection({
-            iceServers: [
-                  {
-                    urls: ["stun:bn-turn1.xirsys.com"]
-                  },
-                  {
-                    username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
-                    credential: "8ef24e28-756b-11ee-995a-0242ac140004",
-                    urls: [
-                      "turn:bn-turn1.xirsys.com:80?transport=udp",
-                      "turn:bn-turn1.xirsys.com:3478?transport=udp",
-                      "turn:bn-turn1.xirsys.com:80?transport=tcp",
-                      "turn:bn-turn1.xirsys.com:3478?transport=tcp",
-                      "turns:bn-turn1.xirsys.com:443?transport=tcp",
-                      "turns:bn-turn1.xirsys.com:5349?transport=tcp"
-                    ]
-                  }
+        //const peer = new webrtc.RTCPeerConnection({
+        //  iceServers: [
+        //          {
+        //            urls: ["stun:bn-turn1.xirsys.com"]
+        //          },
+        //          {
+        //            username: "S84a7744_c0ftSQfy1p_90TW-bKSAMQVXr1j6jptUBOs1dYia9_l52R8TNh1HBi_AAAAAGU8xXtNdXphbWlsK2hhbjE=",
+        //            credential: "8ef24e28-756b-11ee-995a-0242ac140004",
+        //            urls: [
+        //              "turn:bn-turn1.xirsys.com:80?transport=udp",
+        //              "turn:bn-turn1.xirsys.com:3478?transport=udp",
+        //              "turn:bn-turn1.xirsys.com:80?transport=tcp",
+        //              "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+        //              "turns:bn-turn1.xirsys.com:443?transport=tcp",
+        //              "turns:bn-turn1.xirsys.com:5349?transport=tcp"
+        //            ]
+        //          }
                 // {
                 //   urls: "turn:turn.safetixstreaming.com",
                 //   username: "chris",
@@ -230,8 +259,35 @@ app.post(`/broadcast/`, async ({ body }, res) => {
                 //     username: "807973d909920f718ba0b567",
                 //     credential: "VGyNVhO+WtsGoTih",
                 //   },
-            ]
-        });
+          //  ]
+        //});
+            const peer = new webrtc.RTCPeerConnection({
+        iceServers: [
+            {
+              urls: "stun:stun.relay.metered.ca:80",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:80",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:80?transport=tcp",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:443",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },
+            {
+              urls: "turn:a.relay.metered.ca:443?transport=tcp",
+              username: "557c1e519ca2d3a30ffa084d",
+              credential: "eOjtHEWQlCk7Ohe+",
+            },        
+        ]
+    })
         peer.ontrack = (e) => handleTrackEvent(e, peer);
         const desc = new webrtc.RTCSessionDescription(body.sdp);
         await peer.setRemoteDescription(desc);
